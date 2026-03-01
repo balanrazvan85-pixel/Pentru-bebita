@@ -2,40 +2,68 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pentru iubita mea ❤️</title>
 <style>
-    body {
+    html, body {
+        height: 100%;
         margin: 0;
         padding: 0;
+    }
+
+    body {
         background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* O fontă puțin mai elegantă */
         text-align: center;
         color: white;
-        overflow: hidden;
+        display: flex; /* Folosim flexbox pentru centrare */
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden; /* Ascundem doar bara orizontală, lăsăm scroll vertical dacă e nevoie */
     }
 
     .container {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 20px;
+        padding: 40px 20px;
+        background-color: rgba(255, 255, 255, 0.2); /* Un fundal alb translucid pentru contrast */
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        max-width: 800px;
+        width: 90%;
+        margin: 20px auto;
+        position: relative; /* Pentru a sta deasupra inimioarelor care cad */
+        z-index: 1;
+    }
+
+    /* Stiluri pentru poză */
+    .poza-felicitare {
+        max-width: 100%; /* Să nu iasă din cadru pe telefon */
+        height: auto;
+        border-radius: 15px; /* Colțuri rotunjite la poză */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        margin-bottom: 20px; /* Spațiu sub poză */
+        border: 5px solid white; /* O ramă albă */
     }
 
     h1 {
-        font-size: 60px;
+        font-size: 40px; /* Puțin mai mic ca să încapă bine cu tot cu poză */
+        margin-top: 0;
         animation: glow 2s infinite alternate;
+        font-family: Georgia, serif; /* Font stil scris de mână pentru titlu */
     }
 
     p {
-        font-size: 22px;
-        max-width: 700px;
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 600px;
         margin: auto;
-        margin-top: 20px;
+        background-color: rgba(0, 0, 0, 0.3); /* Fundal întunecat la text pentru lizibilitate */
+        padding: 20px;
+        border-radius: 10px;
     }
 
     @keyframes glow {
-        from { text-shadow: 0 0 10px white; }
-        to { text-shadow: 0 0 30px red; }
+        from { text-shadow: 0 0 10px white, 0 0 20px #ff9a9e; }
+        to { text-shadow: 0 0 20px white, 0 0 30px #ff4f58; }
     }
 
     .heart {
@@ -43,24 +71,28 @@
         color: red;
         font-size: 20px;
         animation: fall linear infinite;
+        user-select: none;
+        z-index: 0; /* Inimioarele trec prin spate */
     }
 
     @keyframes fall {
-        0% { transform: translateY(-10%); opacity: 1; }
-        100% { transform: translateY(110vh); opacity: 0; }
+        0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
 </style>
 </head>
 <body>
 
 <div class="container">
+    <img src="felicitare.jpg" alt="Felicitare Te Iubesc" class="poza-felicitare">
+
     <h1>Te iubesc infinit viața mea ❤️</h1>
     <p>
-        Buna bebitaaa, vreau sa ti spun ca te iubesc cel mai mult din toaaaata lumea si ca iti multumesc ca esti o iubita asa de perfecta mereu.
-        Esti mereu alaturi de mine si nu mai vreau niciodata nimic altceva decat pe tine.
-        Vreau sa fiu impreuna mereu.
-        Sper ca acest cadou improvizat sa ti faca ziua mai frumoasa.
-        La multi ani de 1 martie, bebitaaaa!
+        Buna bebitaaa, vreau sa ti spun ca te iubesc cel mai mult din toaaaata lumea si ca iti multumesc ca esti o iubita asa de perfecta mereu.<br><br>
+        Esti mereu alaturi de mine si nu mai vreau niciodata nimic altceva decat pe tine.<br>
+        Vreau sa fiu impreuna mereu.<br><br>
+        Sper ca acest cadou improvizat sa ti faca ziua mai frumoasa.<br>
+        <strong>La multi ani de 1 martie, bebitaaaa!</strong>
     </p>
 </div>
 
@@ -70,7 +102,9 @@
         heart.classList.add("heart");
         heart.innerHTML = "❤️";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s"; // Între 2 și 5 secunde
+        heart.style.fontSize = (Math.random() * 10 + 15) + "px"; // Dimensiuni variate
+
         document.body.appendChild(heart);
 
         setTimeout(() => {
@@ -78,6 +112,7 @@
         }, 5000);
     }
 
+    // Creează o inimă la fiecare 300ms
     setInterval(createHeart, 300);
 </script>
 
